@@ -1,0 +1,10 @@
+<script src="https://cdn.jsdelivr.net/npm/microsoft-cognitiveservices-speech-sdk/distrib/browser/microsoft.cognitiveservices.speech.sdk.bundle.js"></script>
+
+const subscriptionKey = 'YOUR_SUBSCRIPTION_KEY';const region = 'YOUR_REGION';
+const speechConfig = SpeechSDK.SpeechConfig.fromSubscription(subscriptionKey, region);const audioConfig = SpeechSDK.AudioConfig.fromDefaultMicrophoneInput();const recognizer = new SpeechSDK.SpeechRecognizer(speechConfig, audioConfig);
+
+
+recognizer.recognizeOnceAsync(result => {  if (result.reason === SpeechSDK.ResultReason.RecognizedSpeech) {    console.log(`Recognized: ${result.text}`);  } else {    console.error(`Error: ${SpeechSDK.ResultReason[result.reason]}`);  }});
+
+
+
